@@ -1,6 +1,6 @@
 import json
 
-size(7030 / 2, 4006 / 2)
+size(251.5,143.31)
 background(1)
 image("map6.jpg")
 
@@ -30,8 +30,9 @@ for bird in species_nameData:
 		    # convert lat / lon
 		    x = xOfDot(float(bird['lon']))
 		    y = yOfDot(float(bird['lat']))
-		    diameter = 3.0
+		    diameter = 4.0
 		    oval(x, y, diameter, diameter)
+		    
 		    
 diameter = 5.0
 fill(1, 0, 0)
