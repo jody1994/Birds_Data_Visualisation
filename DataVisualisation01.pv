@@ -34,10 +34,18 @@ for bird in species_nameData:
             x = xOfDot(float(bird['lon']))
             y = yOfDot(float(bird['lat']))
             for i, c in enumerate(bird["colors"]):
-                fill(c["r"], c["g"], c["b"], 0.5)
-                x_with_offset = x + 5
-                y_with_offset = y + -5
-                diameter = 40.0
+                r = c["r"] / 255.0
+                g = c["g"] / 255.0
+                b = c["b"] / 255.0
+                fill(r, g, b , 0.5)
+                diameter = 50.0
+                x_with_offset = x - diameter / 2
+                y_with_offset = y - diameter / 2
+                if i > 0:
+                    y_with_offset -= 20
+                    x_with_offset -= 15
+                if i > 1:
+                    x_with_offset += 30
                 oval(x_with_offset, y_with_offset , diameter, diameter)
             
 if showingRegistrationMarks:            
