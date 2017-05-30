@@ -24,22 +24,21 @@ def yOfDot(lat):
 with open("small_set_color.json", 'r') as inputFile:
     species_nameData = json.load(inputFile)
 
- for i, c in enumerate(data[“colors”]):
-fill(c[“r”], c[“g”], c[“b”], 0.5)
-x_with_offset = x + 5
-y_with_offset = y + -5
-oval(x_with_offset, y_with_offset , 4, 4)
 
-#for bird in species_nameData:
-	#if bird.has_key('species-name'):
-	#	if bird.has_key('colors'):
-		    # convert lat / lon
-		   # x = xOfDot(float(bird['lon']))
-		   # y = yOfDot(float(bird['lat']))
-		   # diameter = 40.0
-		   # oval(x, y, diameter, diameter)
-		    
-		    
+for bird in species_nameData:
+    if bird.has_key('species-name'):
+        if bird.has_key('colors'):
+            # convert lat / lon
+            x = xOfDot(float(bird['lon']))
+            y = yOfDot(float(bird['lat']))
+            for i, c in enumerate(bird["colors"]):
+                fill(c["r"], c["g"], c["b"], 0.5)
+                x_with_offset = x + 5
+                y_with_offset = y + -5
+                diameter = 40.0
+                oval(x_with_offset, y_with_offset , diameter, diameter)
+            
+            
 diameter = 50.0
 fill(1, 0, 0)
 x = xOfDot(-124.7344)
