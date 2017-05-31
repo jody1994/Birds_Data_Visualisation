@@ -1,8 +1,8 @@
 import json
 
-size(3508, 2480)
+size(3508, 2481)
 background(1)
-image("correct2.jpg")
+image("grey.jpg")
 
 showingRegistrationMarks = True
 
@@ -18,14 +18,13 @@ def mapValue(value, fromMin, fromMax, toMin, toMax):
     return toMin + (valueScaled * toSpan)
 
 def xOfDot(lon):
-    return mapValue(lon, -129, -66, 0, WIDTH)
+    return mapValue(lon, -126, -64, 0, WIDTH)
 
 def yOfDot(lat):
-    return mapValue(lat, 23, 52, HEIGHT, 0)
+    return mapValue(lat, 23, 53, HEIGHT, 0)
 
 with open("small_set_color.json", 'r') as inputFile:
     species_nameData = json.load(inputFile)
-
 
 for bird in species_nameData:
     if bird.has_key('species-name'):
@@ -38,18 +37,18 @@ for bird in species_nameData:
                 g = c["g"] / 255.0
                 b = c["b"] / 255.0
                 fill(r, g, b , 0.5)
-                diameter = 50.0
+                diameter = 90.0
                 x_with_offset = x - diameter / 2
                 y_with_offset = y - diameter / 2
                 if i > 0:
-                    y_with_offset -= 20
-                    x_with_offset -= 15
+                    y_with_offset -= 40
+                    x_with_offset -= 45
                 if i > 1:
-                    x_with_offset += 30
+                    x_with_offset += 50
                 oval(x_with_offset, y_with_offset , diameter, diameter)
             
 if showingRegistrationMarks:            
-    diameter = 50.0
+    diameter = 0.0
     fill(1, 0, 0)
     x = xOfDot(-124.7344)
     y = yOfDot(48.3708)
