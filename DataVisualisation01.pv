@@ -4,6 +4,8 @@ size(3508, 2480)
 background(1)
 image("correct2.jpg")
 
+showingRegistrationMarks = True
+
 def mapValue(value, fromMin, fromMax, toMin, toMax):
     # Figure out how 'wide' each range is
     fromSpan = fromMax - fromMin
@@ -24,33 +26,40 @@ def yOfDot(lat):
 with open("small_set_color.json", 'r') as inputFile:
     species_nameData = json.load(inputFile)
 
- for i, c in enumerate(data[“colors”]):
-fill(c[“r”], c[“g”], c[“b”], 0.5)
-x_with_offset = x + 5
-y_with_offset = y + -5
-oval(x_with_offset, y_with_offset , 4, 4)
 
-#for bird in species_nameData:
-	#if bird.has_key('species-name'):
-	#	if bird.has_key('colors'):
-		    # convert lat / lon
-		   # x = xOfDot(float(bird['lon']))
-		   # y = yOfDot(float(bird['lat']))
-		   # diameter = 40.0
-		   # oval(x, y, diameter, diameter)
-		    
-		    
-diameter = 50.0
-fill(1, 0, 0)
-x = xOfDot(-124.7344)
-y = yOfDot(48.3708)
-oval(x, y, diameter, diameter)
-x = xOfDot(-66.9903)
-y = yOfDot(44.6217)
-oval(x, y, diameter, diameter)
-x = xOfDot(-97.2246)
-y = yOfDot(25.9185)
-oval(x, y, diameter, diameter)
-x = xOfDot(-81.0527)
-y = yOfDot(25.1254)
-oval(x, y, diameter, diameter)
+for bird in species_nameData:
+    if bird.has_key('species-name'):
+        if bird.has_key('colors'):
+            # convert lat / lon
+            x = xOfDot(float(bird['lon']))
+            y = yOfDot(float(bird['lat']))
+            for i, c in enumerate(bird["colors"]):
+                r = c["r"] / 255.0
+                g = c["g"] / 255.0
+                b = c["b"] / 255.0
+                fill(r, g, b , 0.5)
+                diameter = 50.0
+                x_with_offset = x - diameter / 2
+                y_with_offset = y - diameter / 2
+                if i > 0:
+                    y_with_offset -= 20
+                    x_with_offset -= 15
+                if i > 1:
+                    x_with_offset += 30
+                oval(x_with_offset, y_with_offset , diameter, diameter)
+            
+if showingRegistrationMarks:            
+    diameter = 50.0
+    fill(1, 0, 0)
+    x = xOfDot(-124.7344)
+    y = yOfDot(48.3708)
+    oval(x, y, diameter, diameter)
+    x = xOfDot(-66.9903)
+    y = yOfDot(44.6217)
+    oval(x, y, diameter, diameter)
+    x = xOfDot(-97.2246)
+    y = yOfDot(25.9185)
+    oval(x, y, diameter, diameter)
+    x = xOfDot(-81.0527)
+    y = yOfDot(25.1254)
+    oval(x, y, diameter, diameter)

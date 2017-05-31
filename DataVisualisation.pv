@@ -1,6 +1,6 @@
 import json
 
-size(251.5,143.31)
+size(7030, 4006)
 background(1)
 image("map6.jpg")
 
