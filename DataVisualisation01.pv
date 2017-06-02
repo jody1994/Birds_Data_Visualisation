@@ -37,7 +37,7 @@ for bird in species_nameData:
                 g = c["g"] / 255.0
                 b = c["b"] / 255.0
                 fill(r, g, b , 0.5)
-                diameter = 90.0
+                diameter = species_nameData['count']
                 x_with_offset = x - diameter / 2
                 y_with_offset = y - diameter / 2
                 if i > 0:
