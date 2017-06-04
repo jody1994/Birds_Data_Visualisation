@@ -41,10 +41,10 @@ for bird in species_nameData:
                 x_with_offset = x - diameter / 2
                 y_with_offset = y - diameter / 2
                 if i > 0:
-                    y_with_offset -= 15
-                    x_with_offset -= 20
+                    y_with_offset -= 1.0 * diameter
+                    x_with_offset -= 1.0 * diameter
                 if i > 1:
-                    x_with_offset += 25
+                    x_with_offset += 1.0 * diameter
                 oval(x_with_offset, y_with_offset , diameter, diameter)
             
 if showingRegistrationMarks:            
