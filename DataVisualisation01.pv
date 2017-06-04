@@ -37,15 +37,14 @@ for bird in species_nameData:
                 g = c["g"] / 255.0
                 b = c["b"] / 255.0
                 fill(r, g, b , 0.5)
-                s = 25
-                diameter = bird['count'] * s
+                diameter = bird['count'] * 40 … if i > 0: y_with_offset -= 15 x_with_offset -= 20 if i > 1: x_with_offset += 25 
                 x_with_offset = x - diameter / 2
                 y_with_offset = y - diameter / 2
                 if i > 0:
-                    y_with_offset -= 0.4 * diameter
-                    x_with_offset -= 0.25 * diameter
+                    y_with_offset -= 15
+                    x_with_offset -= 20
                 if i > 1:
-                    x_with_offset += 0.5 * diameter
+                    x_with_offset += 25
                 oval(x_with_offset, y_with_offset , diameter, diameter)
             
 if showingRegistrationMarks:            
